@@ -6,6 +6,7 @@ use_frameworks!
 target 'MedAppJam16' do
 
 	pod 'SwiftyJSON'
+	pod ‘Firebase/Core’
 
 end
 
