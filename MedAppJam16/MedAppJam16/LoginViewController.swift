@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseStorage
 
 class LoginViewController: UIViewController {
 
@@ -22,12 +24,34 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func loginBtnPressed(_ sender: Any) {
-        
+        loginWithCredentials(emailAddress: emailTextField.text!, password: passwordTextField.text!)
     }
     
     func loginWithCredentials(emailAddress: String, password: String) {
-        
-        
+        FIRAuth.auth()?.signIn(withEmail: emailAddress, password: password, completion: { (user, error) in
+            if (error == nil) {
+                // Log in successfully
+                
+                // code to segue to main screens.
+                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                
+            } else {
+                // 2 possibilities. 1) account doesn't exist. 2) Account exists, password was incorrect
+                FIRAuth.auth()?.createUser(withEmail: emailAddress, password: password, completion: { (user, error) in
+                    if (error == nil) {
+                        // Success, created account, logging in now
+                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                        
+                    } else {
+                        let errorMessage = "Account exists but password is incorrect"
+                        let alert = UIAlertController(title: emailAddress, message: errorMessage, preferredStyle: .alert)
+                        let action1 = UIAlertAction.init(title: "Try Again", style: .default, handler: nil)
+                        alert.addAction(action1)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                })
+            }
+        })
     }
     
     
