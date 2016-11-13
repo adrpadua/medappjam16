@@ -17,8 +17,6 @@
 		A03A0D621DD4451D0065A602 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03A0D611DD4451D0065A602 /* Login.storyboard */; };
 		A03A0D6A1DD44E2D0065A602 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A0D691DD44E2D0065A602 /* LoginViewController.swift */; };
 		A03A0D6C1DD44EC70065A602 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */; };
-		A03C67D21DD6E5EE00DD6F5E /* CellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A03C67D11DD6E5EE00DD6F5E /* CellView.xib */; };
-		A03C67D41DD6E63800DD6F5E /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03C67D31DD6E63800DD6F5E /* CellView.swift */; };
 		BA5ADED863C9F7E136A083EB /* Pods_MedAppJam16.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651462A20EB2CF9E1E05B688 /* Pods_MedAppJam16.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,8 +36,6 @@
 		A03A0D611DD4451D0065A602 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A03A0D691DD44E2D0065A602 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		A03C67D11DD6E5EE00DD6F5E /* CellView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CellView.xib; sourceTree = "<group>"; };
-		A03C67D31DD6E63800DD6F5E /* CellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,8 +111,6 @@
 		A03A0D661DD44CD00065A602 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				A0AF3F3A1DD6E81600BF3FD4 /* CalendarView */,
-				A0AF3F391DD6E80D00BF3FD4 /* CellView */,
 				A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */,
 			);
 			name = View;
@@ -139,22 +133,6 @@
 				A03A0D511DD38DA90065A602 /* Main.storyboard */,
 			);
 			name = Storyboard;
-			sourceTree = "<group>";
-		};
-		A0AF3F391DD6E80D00BF3FD4 /* CellView */ = {
-			isa = PBXGroup;
-			children = (
-				A03C67D11DD6E5EE00DD6F5E /* CellView.xib */,
-				A03C67D31DD6E63800DD6F5E /* CellView.swift */,
-			);
-			name = CellView;
-			sourceTree = "<group>";
-		};
-		A0AF3F3A1DD6E81600BF3FD4 /* CalendarView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = CalendarView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +202,6 @@
 				A03A0D601DD443D00065A602 /* GoogleService-Info.plist in Resources */,
 				A03A0D551DD38DA90065A602 /* Assets.xcassets in Resources */,
 				A03A0D621DD4451D0065A602 /* Login.storyboard in Resources */,
-				A03C67D21DD6E5EE00DD6F5E /* CellView.xib in Resources */,
 				A03A0D531DD38DA90065A602 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +263,6 @@
 			files = (
 				A03A0D6A1DD44E2D0065A602 /* LoginViewController.swift in Sources */,
 				A03A0D6C1DD44EC70065A602 /* RoundedButton.swift in Sources */,
-				A03C67D41DD6E63800DD6F5E /* CellView.swift in Sources */,
 				A03A0D501DD38DA90065A602 /* SecondViewController.swift in Sources */,
 				A03A0D4C1DD38DA90065A602 /* AppDelegate.swift in Sources */,
 				A03A0D4E1DD38DA90065A602 /* DashboardViewController.swift in Sources */,

@@ -9,6 +9,5 @@ target 'MedAppJam16' do
 	pod ‘Firebase/Core’
 	pod ‘Firebase/Auth’
 	pod ‘Firebase/Storage’
-	pod 'JTAppleCalendar', '~> 6.0'
 end
 
