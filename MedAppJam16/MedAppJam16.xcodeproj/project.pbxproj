@@ -17,6 +17,7 @@
 		A03A0D621DD4451D0065A602 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A03A0D611DD4451D0065A602 /* Login.storyboard */; };
 		A03A0D6A1DD44E2D0065A602 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A0D691DD44E2D0065A602 /* LoginViewController.swift */; };
 		A03A0D6C1DD44EC70065A602 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */; };
+		A08C2AAA1DD8EB0300547333 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */; };
 		BA5ADED863C9F7E136A083EB /* Pods_MedAppJam16.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651462A20EB2CF9E1E05B688 /* Pods_MedAppJam16.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		A03A0D611DD4451D0065A602 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A03A0D691DD44E2D0065A602 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */,
+				A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 			files = (
 				A03A0D6A1DD44E2D0065A602 /* LoginViewController.swift in Sources */,
 				A03A0D6C1DD44EC70065A602 /* RoundedButton.swift in Sources */,
+				A08C2AAA1DD8EB0300547333 /* MenuTableViewCell.swift in Sources */,
 				A03A0D501DD38DA90065A602 /* SecondViewController.swift in Sources */,
 				A03A0D4C1DD38DA90065A602 /* AppDelegate.swift in Sources */,
 				A03A0D4E1DD38DA90065A602 /* DashboardViewController.swift in Sources */,

@@ -8,17 +8,23 @@
 
 import UIKit
 
-class DashboardViewController: UIViewController {
+class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var doctorImageView: UIImageView!
+//    @IBOutlet weak var doctorImageView: UIImageView!
+    @IBOutlet weak var menuTableView: UITableView!
+    
+    let menuItems = ["My Symptoms", "My Treatments"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        doctorImageView.layer.masksToBounds = false
-        doctorImageView.layer.cornerRadius = 5.0
-        doctorImageView.clipsToBounds = true
+        menuTableView.dataSource = self
+        menuTableView.delegate = self
+        
+//        doctorImageView.layer.masksToBounds = false
+//        doctorImageView.layer.cornerRadius = 5.0
+//        doctorImageView.clipsToBounds = true
         
     }
 
@@ -29,6 +35,37 @@ class DashboardViewController: UIViewController {
     
     @IBAction func phoneNumberBtnPressed(_ sender: Any) {
         print("Calling Doctor Chan!")
+    }
+}
+
+
+
+extension DashboardViewController {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell {
+            
+            let menuItem = menuItems[indexPath.row]
+            
+            cell.configureCell(name: menuItem, color: UIColor(colorWithHexValue: 0x7F64AF))
+            
+            return cell
+            
+        } else {
+            return UITableViewCell()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 140
     }
 }
 
