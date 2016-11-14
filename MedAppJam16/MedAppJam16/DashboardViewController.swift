@@ -13,13 +13,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var menuTableView: UITableView!
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+        // Do any additional setup after loading the view, typically from a nib.        
         menuTableView.dataSource = self
         menuTableView.delegate = self
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,6 +72,11 @@ extension DashboardViewController {
         }
         
         return tableViewHeight / 4
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: menuSegues[indexPath.row], sender: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
