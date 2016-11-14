@@ -60,7 +60,14 @@ class SymptomViewController: UITableViewController {
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
+    @IBAction func updateUserBtnPressed(_ sender: Any) {
+        // if rating = 0, remove from list
+        
+        // else update rating or add new symptom
+    }
+    
+        
     /*
     // MARK: - Navigation
 
