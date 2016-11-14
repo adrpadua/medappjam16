@@ -11,6 +11,7 @@ import UIKit
 class MenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var menuImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,8 +24,9 @@ class MenuTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configureCell(name: String, color: UIColor) {
+    func configureCell(name: String, color: UIColor, imageName: String) {
         layer.backgroundColor = color.cgColor
+        menuImageView.image = UIImage(named: imageName)
         nameLabel.text = name
     }
 

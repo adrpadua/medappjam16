@@ -10,10 +10,9 @@ import UIKit
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-//    @IBOutlet weak var doctorImageView: UIImageView!
     @IBOutlet weak var menuTableView: UITableView!
     
-    let menuItems = ["My Symptoms", "My Treatments"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +20,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         
         menuTableView.dataSource = self
         menuTableView.delegate = self
-        
-//        doctorImageView.layer.masksToBounds = false
-//        doctorImageView.layer.cornerRadius = 5.0
-//        doctorImageView.clipsToBounds = true
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,13 +35,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
 
 extension DashboardViewController {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as? MenuTableViewCell {
             
             let menuItem = menuItems[indexPath.row]
+            let cellColor = menuColors[indexPath.row]
+            let menuImage = menuImages[indexPath.row]
+            print(cellColor)
             
-            cell.configureCell(name: menuItem, color: UIColor(colorWithHexValue: 0x7F64AF))
+            cell.configureCell(name: menuItem, color: UIColor(colorWithHexValue: cellColor), imageName: menuImage)
             
             return cell
             
@@ -65,7 +63,15 @@ extension DashboardViewController {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
+        
+        let screenHeight = UIScreen.main.bounds.height
+        let tableViewHeight = screenHeight - 98
+        
+        if indexPath.row == 0 {
+            return tableViewHeight / 2
+        }
+        
+        return tableViewHeight / 4
     }
 }
 
