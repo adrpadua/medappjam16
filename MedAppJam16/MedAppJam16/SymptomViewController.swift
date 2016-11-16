@@ -13,11 +13,20 @@ class SymptomViewController: UITableViewController {
     var symptom: Symptom!
     
     @IBOutlet weak var ratingLbl: UILabel!
+    @IBOutlet weak var warningLbl1: UILabel!
+    @IBOutlet weak var warningLbl2: UILabel!
+    @IBOutlet weak var warningLbl3: UILabel!
     @IBOutlet weak var ratingDescLbl: UILabel!
+    @IBOutlet weak var posCausesLbl: UILabel!
     @IBOutlet weak var otcLbl: UILabel!
     
     @IBOutlet weak var addBtn: UIButton!
     @IBOutlet weak var minusBtn: UIButton!
+    
+    @IBOutlet weak var updateAddButton: UIBarButtonItem!
+    
+    var fromMySymptomsVC = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +38,7 @@ class SymptomViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,8 +60,20 @@ class SymptomViewController: UITableViewController {
         
         addBtn.isHidden = symptom.rating == symptom.maxRating ? true : false
         minusBtn.isHidden = symptom.rating == 0 ? true : false
+        warningLbl1.isHidden = symptom.rating == 1 ? false : true
+        warningLbl2.isHidden = symptom.rating == 2 ? false : true
+        warningLbl3.isHidden = symptom.rating == 3 ? false : true
+        
         
         ratingLbl.text = "\(symptom.rating)"
+        
+        var possibleCausesText = symptom.possibleCauses[0]
+        for i in 1..<symptom.possibleCauses.count {
+            possibleCausesText += ",\n\(symptom.possibleCauses[i])"
+            }
+        
+        posCausesLbl.text = possibleCausesText
+        
         ratingDescLbl.text = symptom.ratingDescriptions[symptom.rating]
         otcLbl.text = symptom.otcSuggestions
     }
@@ -63,8 +84,21 @@ class SymptomViewController: UITableViewController {
     
     @IBAction func updateUserBtnPressed(_ sender: Any) {
         // if rating = 0, remove from list
-        
+        if symptom.rating == 0 {
+            for index in 0...DataService.ds.user.currentSymptoms.count {
+                if DataService.ds.user.currentSymptoms[index].name == symptom.name {
+                    DataService.ds.user.currentSymptoms.remove(at: index)
+                }
+            }
+        }
         // else update rating or add new symptom
+        else {
+            symptom.rating = NumberFormatter().number(from: ratingLbl.text!) as! Int
+            DataService.ds.user.updateAddSymptom(symptom: symptom)
+            if (fromMySymptomsVC) {
+                dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
         

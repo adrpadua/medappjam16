@@ -27,12 +27,12 @@ class MySymptomTableViewCell: UITableViewCell {
     func configureCell(name: String, rating: Int, color: UIColor) {
         layer.backgroundColor = color.cgColor
         nameLabel.text = name
-        ratingLbl.text = "\(rating)"
+        ratingLbl.text = "Grade \(rating)"
     }
     
     func configureCell(symptom: Symptom, color: UIColor) {
         nameLabel.text = symptom.name
-        ratingLbl.text = "\(symptom.rating)"
+        ratingLbl.text = "Grade \(symptom.rating)"
     }
 
 }

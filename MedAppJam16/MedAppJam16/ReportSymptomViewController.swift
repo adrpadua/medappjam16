@@ -13,6 +13,8 @@ class ReportSymptomViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var tableView: UITableView!
     
+    var fromMySymptomsVC = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -88,9 +90,15 @@ extension ReportSymptomViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         let navVC = segue.destination as! UINavigationController
         let symptomVC = navVC.viewControllers.first as! SymptomViewController
         let listSymptom = sender as! Symptom
+        
+        if (fromMySymptomsVC) {
+            symptomVC.fromMySymptomsVC = true
+            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+        }
         
         symptomVC.symptom = listSymptom
         symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name

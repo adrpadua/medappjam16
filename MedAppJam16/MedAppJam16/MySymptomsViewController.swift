@@ -12,6 +12,7 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var emptyLbl: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,19 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if DataService.ds.user.currentSymptoms.count == 0 {
+            tableView.isHidden = true
+            emptyLbl.isHidden = false
+        } else {
+            tableView.isHidden = false
+            emptyLbl.isHidden = true
+        }
+        
+        print(DataService.ds.user.currentSymptoms.count)
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,13 +68,18 @@ extension MySymptomsViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MySymptomTableViewCell", for: indexPath) as? SymptomTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MySymptomTableViewCell", for: indexPath) as? MySymptomTableViewCell {
             
-            let cellName = "Nausea"
+            if DataService.ds.user.currentSymptoms.count == 0  {
+                return UITableViewCell()
+            }
+            
+            let cellName = DataService.ds.user.currentSymptoms[indexPath.row].name
+            let cellRating = DataService.ds.user.currentSymptoms[indexPath.row].rating
             let cellColor = menuColors[1]
             print(cellColor)
             
-            cell.configureCell(name: cellName, color: UIColor(colorWithHexValue: cellColor))
+            cell.configureCell(name: cellName, rating: cellRating, color: UIColor(colorWithHexValue: cellColor))
             
             return cell
             
@@ -92,14 +111,28 @@ extension MySymptomsViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+        if segue.identifier == "AddSymptomSegue" {
+            let navVC = segue.destination as! UINavigationController
+            let reportSymptomVC = navVC.viewControllers.first as! ReportSymptomViewController
+            
+            reportSymptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            reportSymptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            reportSymptomVC.navigationController?.navigationBar.topItem?.title = "Add a Symptom"
+            reportSymptomVC.fromMySymptomsVC = true
+            
+            return
+        }
+        
         let navVC = segue.destination as! UINavigationController
         let symptomVC = navVC.viewControllers.first as! SymptomViewController
-        let listSymptom = sender as! Symptom
         
-        symptomVC.symptom = listSymptom
-        symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
         symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
+        let listSymptom = sender as! Symptom
+        symptomVC.symptom = listSymptom
+        symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
         
     }
 }

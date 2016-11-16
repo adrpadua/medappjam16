@@ -14,13 +14,15 @@ class Symptom {
     var maxRating = 0
     
     var ratingDescriptions: [String] = []
+    var possibleCauses: [String] = []
     var otcSuggestions = ""
     
-    init(name: String, rating: Int, maxRating: Int, ratingDescriptions: [String], otcSuggestions: String) {
+    init(name: String, rating: Int, maxRating: Int, ratingDescriptions: [String], possibleCauses: [String], otcSuggestions: String) {
         self.name = name
         self.rating = rating
         self.maxRating = maxRating
         self.ratingDescriptions = ratingDescriptions
+        self.possibleCauses = possibleCauses
         self.otcSuggestions = otcSuggestions
     }
     
