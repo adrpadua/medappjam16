@@ -11,6 +11,7 @@
 		A01638D41DDC13DD00A3DC99 /* Treatment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01638D31DDC13DD00A3DC99 /* Treatment.swift */; };
 		A01638D61DDC142700A3DC99 /* Doctor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01638D51DDC142700A3DC99 /* Doctor.swift */; };
 		A01638D91DDC154F00A3DC99 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01638D81DDC154F00A3DC99 /* DataService.swift */; };
+		A01638DF1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01638DE1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift */; };
 		A01AC6761DD93328007BD3C4 /* MenuConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01AC6751DD93328007BD3C4 /* MenuConstants.swift */; };
 		A01AC6781DD940B8007BD3C4 /* ReportSymptomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01AC6771DD940B8007BD3C4 /* ReportSymptomViewController.swift */; };
 		A01D8C251DDA290000927523 /* MySymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01D8C241DDA290000927523 /* MySymptomsViewController.swift */; };
@@ -40,6 +41,7 @@
 		A01638D31DDC13DD00A3DC99 /* Treatment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Treatment.swift; sourceTree = "<group>"; };
 		A01638D51DDC142700A3DC99 /* Doctor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Doctor.swift; sourceTree = "<group>"; };
 		A01638D81DDC154F00A3DC99 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		A01638DE1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTreatmentsViewController.swift; sourceTree = "<group>"; };
 		A01AC6751DD93328007BD3C4 /* MenuConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuConstants.swift; sourceTree = "<group>"; };
 		A01AC6771DD940B8007BD3C4 /* ReportSymptomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportSymptomViewController.swift; sourceTree = "<group>"; };
 		A01D8C241DDA290000927523 /* MySymptomsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySymptomsViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				A01AC6771DD940B8007BD3C4 /* ReportSymptomViewController.swift */,
 				A081218E1DD99E51001409AE /* SymptomViewController.swift */,
 				A01D8C241DDA290000927523 /* MySymptomsViewController.swift */,
+				A01638DE1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				A01D8C271DDA2AB300927523 /* MySymptomTableViewCell.swift in Sources */,
 				A084E9571DD9462800E35720 /* SymptomTableViewCell.swift in Sources */,
 				A03A0D4C1DD38DA90065A602 /* AppDelegate.swift in Sources */,
+				A01638DF1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift in Sources */,
 				A01638D41DDC13DD00A3DC99 /* Treatment.swift in Sources */,
 				A03A0D4E1DD38DA90065A602 /* DashboardViewController.swift in Sources */,
 			);

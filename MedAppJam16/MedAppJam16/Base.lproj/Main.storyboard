@@ -78,6 +78,7 @@
                         <outlet property="menuTableView" destination="Jz9-gy-unu" id="PFj-cF-cMy"/>
                         <segue destination="93o-46-bbE" kind="showDetail" identifier="ReportSymptomSegue" action="showViewController:sender:" id="r6J-cb-LEf"/>
                         <segue destination="6RC-xB-3KU" kind="showDetail" identifier="MySymptomsSegue" action="showViewController:sender:" id="Tnh-FW-SNW"/>
+                        <segue destination="XEd-48-a9d" kind="show" identifier="TreatmentPlanSegue" id="9PS-bB-u7k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -261,10 +262,10 @@
             </objects>
             <point key="canvasLocation" x="1273.913043478261" y="319.56521739130437"/>
         </scene>
-        <!--View Controller-->
+        <!--My Treatments View Controller-->
         <scene sceneID="itO-he-2VC">
             <objects>
-                <viewController id="Y6x-oz-Oen" sceneMemberID="viewController">
+                <viewController id="Y6x-oz-Oen" customClass="MyTreatmentsViewController" customModule="MedAppJam16" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tiC-dL-Dsk"/>
                         <viewControllerLayoutGuide type="bottom" id="UkK-Ih-1qr"/>
@@ -273,19 +274,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zAC-nI-Wmu">
-                                <rect key="frame" x="116" y="271" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RyV-lk-Nxj">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="743"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RyV-lk-Nxj" firstAttribute="top" secondItem="oze-m3-5To" secondAttribute="top" id="GCX-hA-AFM"/>
+                            <constraint firstAttribute="bottom" secondItem="RyV-lk-Nxj" secondAttribute="bottom" id="RG6-pG-n6l"/>
+                            <constraint firstAttribute="trailing" secondItem="RyV-lk-Nxj" secondAttribute="trailing" id="YLI-xP-8Mn"/>
+                            <constraint firstItem="RyV-lk-Nxj" firstAttribute="leading" secondItem="oze-m3-5To" secondAttribute="leading" id="diy-wf-9iO"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="KhM-dy-Tgn"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="KhM-dy-Tgn">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="YJ4-pO-Hyd">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backBtnPressed:" destination="thc-Ep-QP5" id="GnO-qc-aJC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="RyV-lk-Nxj" id="arT-JG-MQn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uKQ-LG-8eu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1274" y="990"/>
+            <point key="canvasLocation" x="1273.913043478261" y="989.67391304347836"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="cRq-AP-AAK">
@@ -337,7 +355,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="4C2F5F99-1272-4E27-BB21-D873B65E7F31" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="0B66891F-3D94-4DF9-9D7D-27E00D2DEA90" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -659,26 +677,27 @@
             <point key="canvasLocation" x="612" y="320"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="iLi-BP-rtT">
+        <scene sceneID="13D-LL-tWw">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iQd-c9-eHO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="XEd-48-a9d" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="8Un-av-iKI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HXH-bp-5hZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6x-oz-Oen" kind="relationship" relationship="rootViewController" id="haI-4f-CUi"/>
+                        <segue destination="Y6x-oz-Oen" kind="relationship" relationship="rootViewController" id="fsJ-fp-axb"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hwW-rI-Sic" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fRg-Z0-Mys" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="612" y="990"/>
         </scene>
     </scenes>
     <resources>
-        <image name="4C2F5F99-1272-4E27-BB21-D873B65E7F31" width="30" height="30">
+        <image name="0B66891F-3D94-4DF9-9D7D-27E00D2DEA90" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
@@ -740,7 +759,7 @@ kguXAAAAAAAAAgEAAAAAAAAATQAAAAAAAAAAAAAAAAAAC5k
         <image name="plus" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="r6J-cb-LEf"/>
         <segue reference="gfT-Dc-4Nq"/>
-        <segue reference="3dV-AB-Xbk"/>
     </inferredMetricsTieBreakers>
 </document>
