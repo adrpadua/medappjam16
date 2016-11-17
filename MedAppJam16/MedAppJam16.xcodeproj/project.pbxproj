@@ -27,9 +27,10 @@
 		A03A0D6C1DD44EC70065A602 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */; };
 		A081218F1DD99E51001409AE /* SymptomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A081218E1DD99E51001409AE /* SymptomViewController.swift */; };
 		A084E9571DD9462800E35720 /* SymptomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E9561DD9462800E35720 /* SymptomTableViewCell.swift */; };
-		A084E9591DD9468400E35720 /* SymptomsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E9581DD9468400E35720 /* SymptomsTable.swift */; };
+		A084E9591DD9468400E35720 /* DummySymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E9581DD9468400E35720 /* DummySymptoms.swift */; };
 		A084E95D1DD94AE300E35720 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E95C1DD94AE300E35720 /* Symptom.swift */; };
 		A08C2AAA1DD8EB0300547333 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */; };
+		A0D3F7981DDD671F00B3385C /* TreatmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */; };
 		BA5ADED863C9F7E136A083EB /* Pods_MedAppJam16.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651462A20EB2CF9E1E05B688 /* Pods_MedAppJam16.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,9 +60,10 @@
 		A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		A081218E1DD99E51001409AE /* SymptomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomViewController.swift; sourceTree = "<group>"; };
 		A084E9561DD9462800E35720 /* SymptomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomTableViewCell.swift; sourceTree = "<group>"; };
-		A084E9581DD9468400E35720 /* SymptomsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomsTable.swift; sourceTree = "<group>"; };
+		A084E9581DD9468400E35720 /* DummySymptoms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummySymptoms.swift; sourceTree = "<group>"; };
 		A084E95C1DD94AE300E35720 /* Symptom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A01AC6751DD93328007BD3C4 /* MenuConstants.swift */,
-				A084E9581DD9468400E35720 /* SymptomsTable.swift */,
+				A084E9581DD9468400E35720 /* DummySymptoms.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -163,6 +165,7 @@
 				A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */,
 				A084E9561DD9462800E35720 /* SymptomTableViewCell.swift */,
 				A01D8C261DDA2AB300927523 /* MySymptomTableViewCell.swift */,
+				A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -316,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A084E9591DD9468400E35720 /* SymptomsTable.swift in Sources */,
+				A084E9591DD9468400E35720 /* DummySymptoms.swift in Sources */,
 				A01AC6781DD940B8007BD3C4 /* ReportSymptomViewController.swift in Sources */,
 				A01D8C251DDA290000927523 /* MySymptomsViewController.swift in Sources */,
 				A03A0D6A1DD44E2D0065A602 /* LoginViewController.swift in Sources */,
@@ -331,6 +334,7 @@
 				A01D8C271DDA2AB300927523 /* MySymptomTableViewCell.swift in Sources */,
 				A084E9571DD9462800E35720 /* SymptomTableViewCell.swift in Sources */,
 				A03A0D4C1DD38DA90065A602 /* AppDelegate.swift in Sources */,
+				A0D3F7981DDD671F00B3385C /* TreatmentTableViewCell.swift in Sources */,
 				A01638DF1DDC63BB00A3DC99 /* MyTreatmentsViewController.swift in Sources */,
 				A01638D41DDC13DD00A3DC99 /* Treatment.swift in Sources */,
 				A03A0D4E1DD38DA90065A602 /* DashboardViewController.swift in Sources */,
