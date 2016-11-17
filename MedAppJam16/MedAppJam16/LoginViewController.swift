@@ -19,8 +19,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if (FIRAuth.auth()?.currentUser) != nil {
+            // User is signed in.
+            print(FIRAuth.auth()?.currentUser?.email!)
+            
+            performSegue(withIdentifier: "loginSegue", sender: nil)
+        } else {
+            // No user is signed in.
+            print("not logged in")
+        }
     }
 
     @IBAction func loginBtnPressed(_ sender: Any) {
@@ -53,7 +66,6 @@ class LoginViewController: UIViewController {
             }
         })
     }
-    
     
 
     /*
