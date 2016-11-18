@@ -417,7 +417,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="31D1B3F2-E086-4B5F-A78C-464FA1146821" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="DCF9FB4A-3EFC-4D20-8388-D3AFBE28B75C" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -958,7 +958,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="31D1B3F2-E086-4B5F-A78C-464FA1146821" width="30" height="30">
+        <image name="DCF9FB4A-3EFC-4D20-8388-D3AFBE28B75C" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGQkNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QDwcI
 ERYbHCUmJygwMzY8P1UkbnVsbNQJCgsMDQ4PEFYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVwc1dOU0Nv
