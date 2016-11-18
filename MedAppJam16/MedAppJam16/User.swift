@@ -42,7 +42,7 @@ class User {
     public func updateAddSymptom(symptom: Symptom) {
         
         if currentSymptoms.count != 0 {
-            for index in 0...currentSymptoms.count {
+            for index in 0...currentSymptoms.count - 1 {
                 if (currentSymptoms[index].name == symptom.name) {
                     currentSymptoms[index].rating = symptom.rating
                     return;
@@ -54,5 +54,14 @@ class User {
         // if not found, add new
         print("Adding \(symptom.name)")
         currentSymptoms.append(symptom)
+    }
+    
+    public func has(symptomName: String) -> Bool {
+        for index in 0...currentSymptoms.count - 1 {
+            if (currentSymptoms[index].name == symptomName) {
+                return true
+            }
+        }
+        return false
     }
 }

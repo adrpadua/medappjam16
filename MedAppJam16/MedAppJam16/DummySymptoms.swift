@@ -28,12 +28,12 @@ let pc3 = ["Radiation therapy", "Alemtuzumab"]
 let s3 = Symptom(name: symptomNames[3], rating: 0, maxRating: 3, ratingDescriptions: rd3, possibleCauses: pc3, otcSuggestions: "Stay well rested and do not exert yourself too hard")
 
 
-let rd4 = ["Currently not experiencing this symptom", "Hemoglobin (Hgb) <LLN - 10.0 g/dL; <LLN - 6.2 mmol/L; <LLN - 100 g/L", "Hgb <10.0 - 8.0 g/dL; <6.2 - 4.9 mmol/L;  <100 - 80g/L", "Hgb <8.0 g/dL; <4.9 mmol/L; <80 g/L; transfusion indicated"]
+let rd4 = ["Currently not experiencing this symptom", "Hemoglobin (Hgb) <LLN - 10.0 g/dL", "Hgb <10.0 - 8.0 g/dL", "Hgb <8.0 g/dL; transfusion indicated"]
 let pc4 = ["Flourouracil"]
-let s4 = Symptom(name: symptomNames[4], rating: 0, maxRating: 3, ratingDescriptions: rd3, possibleCauses: pc3, otcSuggestions: "Stay well rested and do not exert yourself too hard")
+let s4 = Symptom(name: symptomNames[4], rating: 0, maxRating: 3, ratingDescriptions: rd4, possibleCauses: pc4, otcSuggestions: "Stay well rested and do not exert yourself too hard")
 
 
-var symptoms = [s0, s1, s2, s3]
+var symptoms = [s0, s1, s2, s3, s4]
 
 
 
