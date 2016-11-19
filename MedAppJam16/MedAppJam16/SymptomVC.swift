@@ -27,6 +27,7 @@ class SymptomViewController: UITableViewController {
     @IBOutlet weak var updateAddButton: UIBarButtonItem!
     
     var fromMySymptomsVC = false
+    var fromPossibleSymptomsVC = false
     
     
     override func viewDidLoad() {
@@ -103,9 +104,11 @@ class SymptomViewController: UITableViewController {
             if (fromMySymptomsVC) {
                 dismiss(animated: true, completion: nil)
                 presentingViewController?.dismiss(animated: false, completion: nil)
-            } else {
-                dismiss(animated: true, completion: nil)
+            } else if (fromPossibleSymptomsVC){
+                navigationController?.popToRootViewController(animated: true)
+                navigationController.pop
             }
+            dismiss(animated: true, completion: nil)
             
         }
     }

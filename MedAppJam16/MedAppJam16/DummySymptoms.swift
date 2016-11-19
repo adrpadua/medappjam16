@@ -43,4 +43,4 @@ let d0 = Drug(name: "Cyclophosphamide", symptoms: [s0, s2])
 let d1 = Drug(name: "Methotrexate", symptoms: [s0, s1, s2])
 let d2 = Drug(name: "Flourouracil", symptoms: [s0, s1, s4])
 
-let t0 = Treatment(name: "CMF Chemotherapy", drugs: [d0, d1, d2])
+let t0 = Treatment(name: "CMF Chemotherapy", drugs: [d0, d1, d2], desc: "CMF is a combination of the following three chemotherapy drugs:")

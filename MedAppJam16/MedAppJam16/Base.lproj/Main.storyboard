@@ -32,7 +32,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="116"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oSu-jn-jY5" id="WtS-Af-d2w">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="115"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2AK-XO-PVC">
@@ -284,7 +284,7 @@
             </objects>
             <point key="canvasLocation" x="1274" y="-391"/>
         </scene>
-        <!--My Treatments View Controller-->
+        <!--My Treatments-->
         <scene sceneID="itO-he-2VC">
             <objects>
                 <viewController id="Y6x-oz-Oen" customClass="MyTreatmentsViewController" customModule="MedAppJam16" customModuleProvider="target" sceneMemberID="viewController">
@@ -348,7 +348,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="KhM-dy-Tgn">
+                    <navigationItem key="navigationItem" title="My Treatments" id="KhM-dy-Tgn">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="YJ4-pO-Hyd">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -417,7 +417,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="DCF9FB4A-3EFC-4D20-8388-D3AFBE28B75C" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="7839D926-0C30-4386-BC72-922CCD694ED3" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -448,10 +448,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" sectionIndexMinimumDisplayRowCount="-1" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6k6-vK-Z8t">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                                 <color key="backgroundColor" red="0.83529411760000005" green="0.83529411760000005" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="xqi-aT-btw" userLabel="DescriptionCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TreatmentDescriptionCell" rowHeight="150" id="xqi-aT-btw" userLabel="DescriptionCell" customClass="TreatmentDescriptionCell" customModule="MedAppJam16" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xqi-aT-btw" id="Gvi-K5-5Jv">
@@ -466,7 +466,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CMF is a combination of three chemotherapy drugs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJI-nA-oRz">
                                                     <rect key="frame" x="62" y="51.000000000000007" width="290" height="74.666666666666686"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -481,8 +481,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.2627450980392157" green="0.36470588235294116" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="descriptionLbl" destination="tJI-nA-oRz" id="Iry-Be-oPL"/>
+                                            <outlet property="whatThisMeans" destination="PAk-bk-w2w" id="PBn-2l-grZ"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="110" id="TWx-kU-niV" userLabel="DrugCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="DrugCell" rowHeight="110" id="TWx-kU-niV" userLabel="DrugCell" customClass="DrugCell" customModule="MedAppJam16" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="178" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TWx-kU-niV" id="qFD-MR-VSl">
@@ -490,7 +494,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cyclophosphamide" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Db-tu-rsV">
-                                                    <rect key="frame" x="48" y="43" width="164" height="23"/>
+                                                    <rect key="frame" x="28" y="43" width="164" height="23"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -498,12 +502,15 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8Db-tu-rsV" firstAttribute="centerY" secondItem="qFD-MR-VSl" secondAttribute="centerY" id="Na7-eZ-ZqF"/>
-                                                <constraint firstItem="8Db-tu-rsV" firstAttribute="leading" secondItem="qFD-MR-VSl" secondAttribute="leadingMargin" constant="40" id="tzk-A7-KNI"/>
+                                                <constraint firstItem="8Db-tu-rsV" firstAttribute="leading" secondItem="qFD-MR-VSl" secondAttribute="leadingMargin" constant="20" id="tzk-A7-KNI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.2784313725" green="0.4823529412" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="nameLbl" destination="8Db-tu-rsV" id="ZMn-GU-ttM"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="JzI-q2-Pp3" userLabel="ContactCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="QuestionsCell" rowHeight="150" id="JzI-q2-Pp3" userLabel="ContactCell" customClass="QuestionsCell" customModule="MedAppJam16" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="288" width="414" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JzI-q2-Pp3" id="DXW-Ew-KKP">
@@ -511,13 +518,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1I-aj-0TM">
-                                                    <rect key="frame" x="164.33333333333334" y="21" width="85.333333333333314" height="24"/>
+                                                    <rect key="frame" x="164.33333333333334" y="20.999999999999996" width="85.333333333333314" height="29.666666666666661"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfD-xt-XXK" customClass="RoundedButton" customModule="MedAppJam16" customModuleProvider="target">
-                                                    <rect key="frame" x="132" y="74" width="151" height="51"/>
+                                                    <rect key="frame" x="132" y="70.666666666666671" width="151" height="51"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="151" id="MxD-GH-lED"/>
                                                         <constraint firstAttribute="height" constant="51" id="m6k-Ws-145"/>
@@ -531,7 +538,8 @@
                                             <constraints>
                                                 <constraint firstItem="dfD-xt-XXK" firstAttribute="centerX" secondItem="DXW-Ew-KKP" secondAttribute="centerX" id="FoN-Ym-Hg4"/>
                                                 <constraint firstItem="E1I-aj-0TM" firstAttribute="centerX" secondItem="DXW-Ew-KKP" secondAttribute="centerX" id="OV9-XX-Kgq"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="dfD-xt-XXK" secondAttribute="bottom" constant="16" id="sZo-S1-Fr7"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="dfD-xt-XXK" secondAttribute="bottom" constant="20" id="sZo-S1-Fr7"/>
+                                                <constraint firstItem="dfD-xt-XXK" firstAttribute="top" secondItem="E1I-aj-0TM" secondAttribute="bottom" constant="20" id="taY-uh-VqI"/>
                                                 <constraint firstItem="E1I-aj-0TM" firstAttribute="top" secondItem="DXW-Ew-KKP" secondAttribute="topMargin" constant="13" id="whI-Cg-j0D"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -548,11 +556,117 @@
                             <constraint firstItem="DQS-aA-9my" firstAttribute="top" secondItem="6k6-vK-Z8t" secondAttribute="bottom" id="wk4-g9-U7b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9kN-V7-zOZ"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="9kN-V7-zOZ">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="mNe-9S-5Vo">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backBtnPressed:" destination="odd-2O-lGL" id="aGm-mE-TjZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="6k6-vK-Z8t" id="l7B-dO-pOp"/>
+                        <segue destination="gfn-rB-c5n" kind="show" identifier="DrugSideEffectsSegue" id="h2r-MX-iNH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZr-oY-KtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3705.7971014492755" y="817.66304347826099"/>
+        </scene>
+        <!--Drug Side Effects View Controller-->
+        <scene sceneID="9Jq-gb-A2I">
+            <objects>
+                <viewController id="Bep-tt-iUA" customClass="DrugSideEffectsViewController" customModule="MedAppJam16" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jNb-qs-Zo0"/>
+                        <viewControllerLayoutGuide type="bottom" id="EUK-db-JH9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Svp-bf-xcl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="95" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Gh-kA-XVJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="119" id="ok2-qZ-60V" customClass="LabelCell" customModule="MedAppJam16" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="119"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ok2-qZ-60V" id="Qfc-vI-oTK">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="118"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May cause the following side-effects:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="85s-sA-q3L">
+                                                    <rect key="frame" x="62.333333333333343" y="30.666666666666671" width="290" height="57.666666666666657"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="85s-sA-q3L" firstAttribute="centerX" secondItem="Qfc-vI-oTK" secondAttribute="centerX" id="UaN-hE-NXC"/>
+                                                <constraint firstItem="85s-sA-q3L" firstAttribute="centerY" secondItem="Qfc-vI-oTK" secondAttribute="centerY" id="g9b-rZ-6EP"/>
+                                                <constraint firstItem="85s-sA-q3L" firstAttribute="width" secondItem="Qfc-vI-oTK" secondAttribute="width" multiplier="0.7" id="lgl-Rd-CLk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.49676146580000002" green="0.393608081" blue="0.68565705129999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="label" destination="85s-sA-q3L" id="rhM-GP-nih"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SymptomTableViewCell" rowHeight="85" id="UNL-6V-Qjx" customClass="SymptomTableViewCell" customModule="MedAppJam16" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="147" width="414" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UNL-6V-Qjx" id="Ce7-Dz-slT">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptom Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xnb-kz-qyh">
+                                                    <rect key="frame" x="29" y="30.000000000000004" width="151" height="25.333333333333339"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Xnb-kz-qyh" firstAttribute="leading" secondItem="Ce7-Dz-slT" secondAttribute="leadingMargin" constant="21" id="Wv6-CS-NWc"/>
+                                                <constraint firstItem="Xnb-kz-qyh" firstAttribute="centerY" secondItem="Ce7-Dz-slT" secondAttribute="centerY" id="jUG-4w-IFW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.49803921569999998" green="0.3921568627" blue="0.68627450980000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="Xnb-kz-qyh" id="Mwh-bT-Nej"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2Gh-kA-XVJ" secondAttribute="trailing" id="dX2-Bn-BqE"/>
+                            <constraint firstItem="EUK-db-JH9" firstAttribute="top" secondItem="2Gh-kA-XVJ" secondAttribute="bottom" id="hb4-a1-aBY"/>
+                            <constraint firstItem="2Gh-kA-XVJ" firstAttribute="top" secondItem="Svp-bf-xcl" secondAttribute="top" id="uNG-ES-Xa0"/>
+                            <constraint firstItem="2Gh-kA-XVJ" firstAttribute="leading" secondItem="Svp-bf-xcl" secondAttribute="leading" id="xTA-uO-9IZ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="SH1-iP-pm2">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="51a-Zn-kpF">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="backBtnPressed:" destination="odd-2O-lGL" id="Q4L-aB-POe"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="2Gh-kA-XVJ" id="wvg-yV-LG3"/>
+                        <segue destination="lSc-QB-z8g" kind="showDetail" identifier="PossibleSymptomSegue" id="j6t-k7-Bpa"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YBO-fj-8vX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5947.826086956522" y="826.63043478260875"/>
         </scene>
         <!--Symptom View Controller-->
         <scene sceneID="L2A-Zh-M0F">
@@ -956,9 +1070,28 @@
             </objects>
             <point key="canvasLocation" x="2967" y="818"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="AlB-HT-5bc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gfn-rB-c5n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="y4c-b3-Oo6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.031372549020000001" green="0.058823529409999999" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Bep-tt-iUA" kind="relationship" relationship="rootViewController" id="vgB-6M-UVW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Een-Bf-RlL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5208.695652173913" y="826.63043478260875"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="DCF9FB4A-3EFC-4D20-8388-D3AFBE28B75C" width="30" height="30">
+        <image name="7839D926-0C30-4386-BC72-922CCD694ED3" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGQkNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QDwcI
 ERYbHCUmJygwMzY8P1UkbnVsbNQJCgsMDQ4PEFYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVwc1dOU0Nv
@@ -1020,7 +1153,7 @@ ZAtpAAAAAAAAAgEAAAAAAAAARgAAAAAAAAAAAAAAAAAAC2s
         <image name="steth" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r6J-cb-LEf"/>
-        <segue reference="3s0-b2-ry4"/>
+        <segue reference="3dV-AB-Xbk"/>
+        <segue reference="gfT-Dc-4Nq"/>
     </inferredMetricsTieBreakers>
 </document>

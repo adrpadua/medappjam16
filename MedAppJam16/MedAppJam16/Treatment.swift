@@ -13,10 +13,12 @@ class Treatment {
     var commonSymptoms: [Symptom] = []
     var drugs: [Drug] = []
     var drugNames: [String] = []
+    var desc: String
     
-    init(name: String, drugs: [Drug]) {
+    init(name: String, drugs: [Drug], desc: String) {
         self.name = name
         self.drugs = drugs
+        self.desc = desc
         
         for drug in drugs {
             for symptom in drug.symptoms {

@@ -31,6 +31,7 @@
 		A084E9591DD9468400E35720 /* DummySymptoms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E9581DD9468400E35720 /* DummySymptoms.swift */; };
 		A084E95D1DD94AE300E35720 /* Symptom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A084E95C1DD94AE300E35720 /* Symptom.swift */; };
 		A08C2AAA1DD8EB0300547333 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */; };
+		A0B4519C1DE0B8F400996787 /* DrugSideEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4519B1DE0B8F400996787 /* DrugSideEffectsVC.swift */; };
 		A0CEFB3A1DDE52DD0018D022 /* TreatmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CEFB391DDE52DD0018D022 /* TreatmentVC.swift */; };
 		A0D3F7981DDD671F00B3385C /* TreatmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */; };
 		BA5ADED863C9F7E136A083EB /* Pods_MedAppJam16.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651462A20EB2CF9E1E05B688 /* Pods_MedAppJam16.framework */; };
@@ -66,6 +67,7 @@
 		A084E9581DD9468400E35720 /* DummySymptoms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummySymptoms.swift; sourceTree = "<group>"; };
 		A084E95C1DD94AE300E35720 /* Symptom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Symptom.swift; sourceTree = "<group>"; };
 		A08C2AA91DD8EB0300547333 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		A0B4519B1DE0B8F400996787 /* DrugSideEffectsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugSideEffectsVC.swift; sourceTree = "<group>"; };
 		A0CEFB391DDE52DD0018D022 /* TreatmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentVC.swift; sourceTree = "<group>"; };
 		A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +182,7 @@
 				A03A0D691DD44E2D0065A602 /* LoginVC.swift */,
 				A03A0D4D1DD38DA90065A602 /* DashboardVC.swift */,
 				A0B558821DDEC89C00FBB04F /* Menu Pages */,
+				A0B4519A1DE0B8D400996787 /* Other Pages */,
 				A0B558831DDEC8AB00FBB04F /* Item Pages */,
 			);
 			name = Controller;
@@ -193,6 +196,14 @@
 				A03A0D511DD38DA90065A602 /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		A0B4519A1DE0B8D400996787 /* Other Pages */ = {
+			isa = PBXGroup;
+			children = (
+				A0B4519B1DE0B8F400996787 /* DrugSideEffectsVC.swift */,
+			);
+			name = "Other Pages";
 			sourceTree = "<group>";
 		};
 		A0B558821DDEC89C00FBB04F /* Menu Pages */ = {
@@ -341,6 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B4519C1DE0B8F400996787 /* DrugSideEffectsVC.swift in Sources */,
 				A084E9591DD9468400E35720 /* DummySymptoms.swift in Sources */,
 				A01AC6781DD940B8007BD3C4 /* SympReferenceVC.swift in Sources */,
 				A01D8C251DDA290000927523 /* MySymptomsVC.swift in Sources */,

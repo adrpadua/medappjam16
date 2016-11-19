@@ -45,15 +45,25 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
         dismiss(animated: true, completion: nil)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "MyTreatmentSegue" {
+            let selectedTreatment = sender as! Treatment
+            let navVC = segue.destination as! UINavigationController
+            let myTreatmentVC = navVC.viewControllers.first as! TreatmentViewController
+            myTreatmentVC.treatment = selectedTreatment
+            myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            myTreatmentVC.navigationController?.navigationBar.topItem?.title = selectedTreatment.name
+        }
+        
     }
-    */
+ 
 
 }
 
@@ -93,5 +103,13 @@ extension MyTreatmentsViewController {
         let tableViewHeight = screenHeight - 64
         
         return tableViewHeight / 8
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var selectedTreatment: Treatment
+        selectedTreatment = DataService.ds.user.currentTreatments[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "MyTreatmentSegue", sender: selectedTreatment)
     }
 }
