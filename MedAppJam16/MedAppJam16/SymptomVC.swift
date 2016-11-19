@@ -71,7 +71,7 @@ class SymptomViewController: UITableViewController {
         warningLbl2.isHidden = symptom.rating == 2 ? false : true
         warningLbl3.isHidden = symptom.rating == 3 ? false : true
         
-        if (fromMySymptomsVC) {
+        if (fromMySymptomsVC || fromPossibleSymptomsVC) {
             updateAddButton.isEnabled = symptom.rating == 0 ? false : true
         }
         
@@ -105,8 +105,8 @@ class SymptomViewController: UITableViewController {
                 dismiss(animated: true, completion: nil)
                 presentingViewController?.dismiss(animated: false, completion: nil)
             } else if (fromPossibleSymptomsVC){
-                navigationController?.popToRootViewController(animated: true)
-                navigationController.pop
+                dismiss(animated: true, completion: nil)
+                
             }
             dismiss(animated: true, completion: nil)
             

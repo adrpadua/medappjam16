@@ -57,6 +57,11 @@ class User {
     }
     
     public func has(symptomName: String) -> Bool {
+        
+        if currentSymptoms.count == 0 {
+            return false
+        }
+        
         for index in 0...currentSymptoms.count - 1 {
             if (currentSymptoms[index].name == symptomName) {
                 return true

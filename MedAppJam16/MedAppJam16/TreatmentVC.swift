@@ -36,8 +36,7 @@ class TreatmentViewController: UIViewController, UITableViewDelegate, UITableVie
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let navVC = segue.destination as! UINavigationController
-        let drugSideEffectsVC = navVC.viewControllers.first as! DrugSideEffectsViewController
+        let drugSideEffectsVC = segue.destination as! DrugSideEffectsViewController
         drugSideEffectsVC.drug = sender as! Drug
         
         drugSideEffectsVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
@@ -54,6 +53,7 @@ extension TreatmentViewController {
         
             if let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentDescriptionCell")  as? TreatmentDescriptionCell  {
                 cell.configureCell(desc: treatment.desc)
+                cell.isUserInteractionEnabled = false
                 return cell
             }
             
@@ -61,16 +61,17 @@ extension TreatmentViewController {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "DrugCell")  as? DrugCell  {
                 cell.configureCell(name: treatment.drugs[indexPath.row - 1].name)
+                cell.selectionStyle = .default
                 return cell
             }
             
         } else {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionsCell")  as? QuestionsCell  {
+                cell.isUserInteractionEnabled = false
                 return cell
             }
         }
-        
         return UITableViewCell()
     }
     
@@ -96,8 +97,9 @@ extension TreatmentViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedDrug = treatment.drugs[indexPath.row + 1]
-        performSegue(withIdentifier: "DrugSideEffectsSegue", sender: selectedDrug)
+        let selectedDrug = treatment.drugs[indexPath.row - 1]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "PossibleSymptomsSegue", sender: selectedDrug)
     }
 }
 

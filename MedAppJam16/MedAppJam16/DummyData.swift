@@ -35,7 +35,7 @@ let s4 = Symptom(name: symptomNames[4], rating: 0, maxRating: 3, ratingDescripti
 
 var symptoms = [s0, s1, s2, s3, s4]
 
-
+var emptySymptom = Symptom(name: "", rating: -1, maxRating: 0, ratingDescriptions: [], possibleCauses: [], otcSuggestions: "")
 
 
 // DRUGS/TREATMENTS

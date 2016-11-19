@@ -17,6 +17,10 @@ class Symptom {
     var possibleCauses: [String] = []
     var otcSuggestions = ""
     
+    init() {
+        
+    }
+    
     init(name: String, rating: Int, maxRating: Int, ratingDescriptions: [String], possibleCauses: [String], otcSuggestions: String) {
         self.name = name
         self.rating = rating

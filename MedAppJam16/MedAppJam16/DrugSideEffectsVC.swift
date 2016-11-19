@@ -33,20 +33,20 @@ class DrugSideEffectsViewController: UIViewController, UITableViewDelegate, UITa
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "PossibleSymptomSegue" {
+        if segue.identifier == "MySymptomsSegue" {
             let navVC = segue.destination as! UINavigationController
-            let symptomVC = navVC.viewControllers.first as! SymptomViewController
+            let mySymptomsVC = navVC.viewControllers.first as! MySymptomsViewController
             let listSymptom = sender as! Symptom
             
-            symptomVC.fromPossibleSymptomsVC = true
-            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
-            
-            symptomVC.symptom = listSymptom
-            symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
-            symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
-            symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            mySymptomsVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            mySymptomsVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            mySymptomsVC.fromPossibleCauses = true
+            mySymptomsVC.dummySymptom = listSymptom
         }
         
+    }
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.navigationController!.popViewController(animated: true)
     }
 
 }
@@ -86,9 +86,11 @@ extension DrugSideEffectsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row > 0 {
             let selectedSymptom = drug.symptoms[indexPath.row - 1]
-            performSegue(withIdentifier: "PossibleSymptomSegue", sender: selectedSymptom)
-            
+            tableView.deselectRow(at: indexPath, animated: false)
+            self.navigationController!.popToRootViewController(animated: false)
+            performSegue(withIdentifier: "MySymptomsSegue", sender: selectedSymptom)
         }
+        
     }
 }
 

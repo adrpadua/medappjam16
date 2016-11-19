@@ -14,6 +14,9 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyLbl: UILabel!
     
+    var dummySymptom: Symptom = Symptom()
+    var fromPossibleCauses = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,8 +38,11 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
             emptyLbl.isHidden = true
         }
         
-        print(DataService.ds.user.currentSymptoms.count)
         self.tableView.reloadData()
+        
+        if fromPossibleCauses {
+            performSegue(withIdentifier: "MySymptomSegue", sender: dummySymptom)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -116,7 +122,7 @@ extension MySymptomsViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
+        
         if segue.identifier == "AddSymptomSegue" {
             let navVC = segue.destination as! UINavigationController
             let symptomReferenceVC = navVC.viewControllers.first as! SymptomReferenceViewController
@@ -129,15 +135,21 @@ extension MySymptomsViewController {
             return
         }
         
-        let navVC = segue.destination as! UINavigationController
-        let symptomVC = navVC.viewControllers.first as! SymptomViewController
-        
-        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
-        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
-        let listSymptom = sender as! Symptom
-        symptomVC.symptom = listSymptom
-        symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
+        if segue.identifier == "MySymptomSegue" {
+            let navVC = segue.destination as! UINavigationController
+            let symptomVC = navVC.viewControllers.first as! SymptomViewController
+            
+            symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            
+            if fromPossibleCauses {
+                symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+            }
+            
+            let listSymptom = sender as! Symptom
+            symptomVC.symptom = listSymptom
+            symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
+        }
         
     }
 }
