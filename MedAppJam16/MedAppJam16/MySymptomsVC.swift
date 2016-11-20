@@ -82,7 +82,7 @@ extension MySymptomsViewController {
             
             let cellName = DataService.ds.user.currentSymptoms[indexPath.row].name
             let cellRating = DataService.ds.user.currentSymptoms[indexPath.row].rating
-            let cellColor = menuColors[1]
+            let cellColor = menuColors[0]
             print(cellColor)
             
             cell.configureCell(name: cellName, rating: cellRating, color: UIColor(colorWithHexValue: cellColor))
@@ -142,13 +142,15 @@ extension MySymptomsViewController {
             symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
             symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
             
-            if fromPossibleCauses {
-                symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
-            }
-            
             let listSymptom = sender as! Symptom
             symptomVC.symptom = listSymptom
             symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
+            
+            if fromPossibleCauses {
+                print(DataService.ds.user.has(symptomName: listSymptom.name))
+                symptomVC.navigationItem.rightBarButtonItem?.title = DataService.ds.user.has(symptomName: listSymptom.name) ? "Update" : "Add"
+            }
+            
         }
         
     }

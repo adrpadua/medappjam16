@@ -9,5 +9,17 @@
 import Foundation
 
 class Doctor {
+    var name = ""
+    var hospital = ""
+    var address = ""
     
+    init() {
+        
+    }
+    
+    init(name: String, hospital: String, address: String) {
+        self.name = name
+        self.hospital = hospital
+        self.address = address
+    }
 }

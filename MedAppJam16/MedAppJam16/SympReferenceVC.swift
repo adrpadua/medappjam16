@@ -55,7 +55,7 @@ extension SymptomReferenceViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "SymptomTableViewCell", for: indexPath) as? SymptomTableViewCell {
             
             let cellName = symptomNames[indexPath.row]
-            let cellColor = menuColors[0]
+            let cellColor = menuColors[1]
             print(cellColor)
             
             cell.configureCell(name: cellName, color: UIColor(colorWithHexValue: cellColor))
@@ -99,10 +99,15 @@ extension SymptomReferenceViewController {
         let navVC = segue.destination as! UINavigationController
         let symptomVC = navVC.viewControllers.first as! SymptomViewController
         let listSymptom = sender as! Symptom
+        symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
         
-        if (fromMySymptomsVC) {
-            symptomVC.fromMySymptomsVC = true
-            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+//        if (fromMySymptomsVC) {
+//            symptomVC.fromMySymptomsVC = true
+//            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+//        }
+//        
+        if DataService.ds.user.has(symptomName: listSymptom.name) {
+            symptomVC.navigationItem.rightBarButtonItem?.title = "Update"
         }
         
         symptomVC.symptom = listSymptom

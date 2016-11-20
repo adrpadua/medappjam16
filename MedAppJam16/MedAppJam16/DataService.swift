@@ -20,6 +20,6 @@ class DataService {
     // DB references
     var REF_BASE = DB_BASE
     
-    var user = User(name: "Sarah Connor", currentSymptoms: [], currentTreatments: [t0], doctor: Doctor())
+    var user = User(name: "Sarah Connor", currentSymptoms: [], currentTreatments: [t0], doctor: doc0)
     
 }

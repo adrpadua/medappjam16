@@ -28,7 +28,7 @@ class TreatmentViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        self.navigationController!.popViewController(animated: true)
     }
 
     // MARK: - Navigation
@@ -89,9 +89,9 @@ extension TreatmentViewController {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 170
+            return 150
         } else if indexPath.row == treatment.drugs.count + 1 {
-            return 170
+            return 180
         }
         return 100
     }
@@ -106,12 +106,10 @@ extension TreatmentViewController {
 class TreatmentDescriptionCell: UITableViewCell {
     
     
-    @IBOutlet weak var whatThisMeans: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
     
     
     func configureCell(desc: String) {
-        whatThisMeans.text = "What this means:"
         descriptionLbl.text = desc
     }
 

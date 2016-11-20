@@ -71,9 +71,13 @@ class SymptomViewController: UITableViewController {
         warningLbl2.isHidden = symptom.rating == 2 ? false : true
         warningLbl3.isHidden = symptom.rating == 3 ? false : true
         
-        if (fromMySymptomsVC || fromPossibleSymptomsVC) {
-            updateAddButton.isEnabled = symptom.rating == 0 ? false : true
+        if DataService.ds.user.has(symptomName: symptom.name) {
+            updateAddButton.isEnabled = symptom.rating == 0 ? true : false
         }
+        
+//        if (fromMySymptomsVC || fromPossibleSymptomsVC) {
+//            updateAddButton.isEnabled = symptom.rating == 0 ? false : true
+//        }
         
         ratingLbl.text = "\(symptom.rating)"
         
@@ -89,11 +93,28 @@ class SymptomViewController: UITableViewController {
         
         // if rating = 0, remove from list
         if symptom.rating == 0 {
-            for index in 0...DataService.ds.user.currentSymptoms.count {
-                if DataService.ds.user.currentSymptoms[index].name == symptom.name {
-                    DataService.ds.user.currentSymptoms.remove(at: index)
+            if DataService.ds.user.currentSymptoms.count == 0 {
+                dismiss(animated: true, completion: nil)
+            }
+            
+            // HAS IT
+            if DataService.ds.user.has(symptomName: symptom.name) {
+                for index in 0...DataService.ds.user.currentSymptoms.count {
+                    if DataService.ds.user.currentSymptoms[index].name == symptom.name {
+                        print("Found \(DataService.ds.user.currentSymptoms[index].name)")
+                        DataService.ds.user.currentSymptoms.remove(at: index)
+                        print(DataService.ds.user.currentSymptoms.count)
+                        dismiss(animated: true, completion: nil)
+                        return
+                    }
                 }
             }
+            
+            // DOESN'T HAVE IT
+            else {
+                dismiss(animated: true, completion: nil)
+            }
+            
         }
             
         // else update rating or add new symptom
@@ -106,7 +127,6 @@ class SymptomViewController: UITableViewController {
                 presentingViewController?.dismiss(animated: false, completion: nil)
             } else if (fromPossibleSymptomsVC){
                 dismiss(animated: true, completion: nil)
-                
             }
             dismiss(animated: true, completion: nil)
             

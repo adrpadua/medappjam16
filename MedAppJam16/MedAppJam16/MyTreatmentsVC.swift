@@ -54,12 +54,11 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
         // Pass the selected object to the new view controller.
         if segue.identifier == "MyTreatmentSegue" {
             let selectedTreatment = sender as! Treatment
-            let navVC = segue.destination as! UINavigationController
-            let myTreatmentVC = navVC.viewControllers.first as! TreatmentViewController
+            let myTreatmentVC = segue.destination as! TreatmentViewController
             myTreatmentVC.treatment = selectedTreatment
+            myTreatmentVC.title = selectedTreatment.name
             myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
             myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            myTreatmentVC.navigationController?.navigationBar.topItem?.title = selectedTreatment.name
         }
         
     }
@@ -72,7 +71,6 @@ extension MyTreatmentsViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentTableViewCell", for: indexPath) as? TreatmentTableViewCell {
-        print(DataService.ds.user.currentTreatments.count)
         if DataService.ds.user.currentTreatments.count == 0  {
             return UITableViewCell()
         }

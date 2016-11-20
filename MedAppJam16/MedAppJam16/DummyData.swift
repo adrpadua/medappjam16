@@ -44,3 +44,10 @@ let d1 = Drug(name: "Methotrexate", symptoms: [s0, s1, s2])
 let d2 = Drug(name: "Flourouracil", symptoms: [s0, s1, s4])
 
 let t0 = Treatment(name: "CMF Chemotherapy", drugs: [d0, d1, d2], desc: "CMF is a combination of the following three chemotherapy drugs:")
+
+// DOCTOR
+let docName = "David Chan, M.D."
+let docHospital = "Torrance Memorial Medical Center"
+let docAddress = "514 N. Prospect Ave, 4th Floor Redondo Beach, CA 90277"
+
+let doc0 = Doctor(name: docName, hospital: docHospital, address: docAddress)

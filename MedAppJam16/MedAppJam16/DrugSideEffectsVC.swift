@@ -68,6 +68,9 @@ extension DrugSideEffectsViewController {
         } else {
             if let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as? LabelCell {
                 cell.configureCell(lbl: "May cause the following side-effects:")
+                cell.isUserInteractionEnabled = false
+                let cellColor = menuColors[0]
+                cell.layer.backgroundColor = UIColor(colorWithHexValue: cellColor).cgColor
                 return cell
             }
             
