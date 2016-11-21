@@ -649,8 +649,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11/22/2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSZ-k4-b0c">
-                                <rect key="frame" x="155" y="20" width="104" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Symptoms: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RSZ-k4-b0c">
+                                <rect key="frame" x="154" y="20" width="106" height="28"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -743,6 +743,7 @@
                         <outlet property="faceImg" destination="V2v-wt-bTI" id="6Hl-gt-W4T"/>
                         <outlet property="label" destination="0VG-Ce-WiH" id="VR5-Ia-ysw"/>
                         <outlet property="slider" destination="aai-t8-xMU" id="qpm-s3-AmH"/>
+                        <outlet property="sympLbl" destination="RSZ-k4-b0c" id="Vs7-K4-fN8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMa-Kq-8ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -773,7 +774,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="850276A5-52CD-432E-B69E-050BB672A075" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="A1A35176-608F-4513-8599-D64093DED2B7" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -1519,7 +1520,7 @@
     </scenes>
     <resources>
         <image name="4" width="256" height="256"/>
-        <image name="850276A5-52CD-432E-B69E-050BB672A075" width="30" height="30">
+        <image name="A1A35176-608F-4513-8599-D64093DED2B7" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND

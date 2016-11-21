@@ -11,6 +11,7 @@ import UIKit
 class SendReportViewController: UIViewController {
 
     @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var sympLbl: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var faceImg: UIImageView!
 
@@ -24,7 +25,11 @@ class SendReportViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        slider.value = 3
+        slider.value = 4
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        sympLbl.text = "Symptoms: \(DataService.ds.user.currentSymptoms.count)"
     }
 
     override func didReceiveMemoryWarning() {
