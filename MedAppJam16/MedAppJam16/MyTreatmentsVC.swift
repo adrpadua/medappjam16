@@ -45,15 +45,24 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
         dismiss(animated: true, completion: nil)
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "MyTreatmentSegue" {
+            let selectedTreatment = sender as! Treatment
+            let myTreatmentVC = segue.destination as! TreatmentViewController
+            myTreatmentVC.treatment = selectedTreatment
+            myTreatmentVC.title = selectedTreatment.name
+            myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        }
+        
     }
-    */
+ 
 
 }
 
@@ -62,7 +71,6 @@ extension MyTreatmentsViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "TreatmentTableViewCell", for: indexPath) as? TreatmentTableViewCell {
-        print(DataService.ds.user.currentTreatments.count)
         if DataService.ds.user.currentTreatments.count == 0  {
             return UITableViewCell()
         }
@@ -93,5 +101,13 @@ extension MyTreatmentsViewController {
         let tableViewHeight = screenHeight - 64
         
         return tableViewHeight / 8
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var selectedTreatment: Treatment
+        selectedTreatment = DataService.ds.user.currentTreatments[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "MyTreatmentSegue", sender: selectedTreatment)
     }
 }

@@ -1,22 +1,22 @@
 //
-//  MySymptomsViewController.swift
+//  ReportSymptomViewController.swift
 //  MedAppJam16
 //
-//  Created by Adrian Padua on 11/14/16.
+//  Created by Adrian Padua on 11/13/16.
 //  Copyright © 2016 Adrian Padua. All rights reserved.
 //
 
 import UIKit
 
-class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SymptomReferenceViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var emptyLbl: UILabel!
+    
+    var fromMySymptomsVC = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         
         tableView.dataSource = self
@@ -24,32 +24,16 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if DataService.ds.user.currentSymptoms.count == 0 {
-            tableView.isHidden = true
-            emptyLbl.isHidden = false
-        } else {
-            tableView.isHidden = false
-            emptyLbl.isHidden = true
-        }
         
-        print(DataService.ds.user.currentSymptoms.count)
-        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
-    }
-
-    @IBAction func addBtnPressed(_ sender: Any) {
-        performSegue(withIdentifier: "AddSymptomSegue", sender: nil)
     }
     
     /*
@@ -64,22 +48,17 @@ class MySymptomsViewController: UIViewController, UITableViewDelegate, UITableVi
 
 }
 
-extension MySymptomsViewController {
+extension SymptomReferenceViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MySymptomTableViewCell", for: indexPath) as? MySymptomTableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "SymptomTableViewCell", for: indexPath) as? SymptomTableViewCell {
             
-            if DataService.ds.user.currentSymptoms.count == 0  {
-                return UITableViewCell()
-            }
-            
-            let cellName = DataService.ds.user.currentSymptoms[indexPath.row].name
-            let cellRating = DataService.ds.user.currentSymptoms[indexPath.row].rating
+            let cellName = symptomNames[indexPath.row]
             let cellColor = menuColors[1]
             print(cellColor)
             
-            cell.configureCell(name: cellName, rating: cellRating, color: UIColor(colorWithHexValue: cellColor))
+            cell.configureCell(name: cellName, color: UIColor(colorWithHexValue: cellColor))
             
             return cell
             
@@ -93,7 +72,7 @@ extension MySymptomsViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataService.ds.user.currentSymptoms.count
+        return symptomNames.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -105,34 +84,36 @@ extension MySymptomsViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let symptom = symptoms[0]
-        performSegue(withIdentifier: "MySymptomSegue", sender: symptom)
+        var symptom: Symptom
+        if indexPath.row < symptoms.count {
+            symptom = symptoms[indexPath.row]
+        } else {
+            symptom = symptoms[0]
+        }
+        performSegue(withIdentifier: "SymptomSegue", sender: symptom)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        if segue.identifier == "AddSymptomSegue" {
-            let navVC = segue.destination as! UINavigationController
-            let reportSymptomVC = navVC.viewControllers.first as! ReportSymptomViewController
-            
-            reportSymptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
-            reportSymptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-            reportSymptomVC.navigationController?.navigationBar.topItem?.title = "Add a Symptom"
-            reportSymptomVC.fromMySymptomsVC = true
-            
-            return
-        }
         
         let navVC = segue.destination as! UINavigationController
         let symptomVC = navVC.viewControllers.first as! SymptomViewController
-        
-        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
-        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
         let listSymptom = sender as! Symptom
+        symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+        
+//        if (fromMySymptomsVC) {
+//            symptomVC.fromMySymptomsVC = true
+//            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+//        }
+//        
+        if DataService.ds.user.has(symptomName: listSymptom.name) {
+            symptomVC.navigationItem.rightBarButtonItem?.title = "Update"
+        }
+        
         symptomVC.symptom = listSymptom
         symptomVC.navigationController?.navigationBar.topItem?.title = listSymptom.name
+        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+        symptomVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
     }
 }

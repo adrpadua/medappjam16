@@ -16,6 +16,6 @@ let MENUCOLOR5 = 0x49B9E2
 let MENUCOLOR6 = 0x49D0E2
 
 let menuColors = [MENUCOLOR1, MENUCOLOR2, MENUCOLOR3, MENUCOLOR4, MENUCOLOR5, MENUCOLOR6]
-let menuItems = ["Report a Symptom", "My Current Symptoms", "Treatment Plan", "Contact My Doctor", "User Settings"]
+let menuItems = ["My Current Symptoms", "Symptom Reference", "Treatment Plan", "Contact My Doctor", "User Settings"]
 let menuImages = ["menu0", "menu1", "menu2", "menu3", "menu4",]
-let menuSegues = ["ReportSymptomSegue", "MySymptomsSegue", "TreatmentPlanSegue", "ContactDoctorSegue", "SettingsSegue"]
+let menuSegues = ["MySymptomsSegue", "ReferenceSegue", "TreatmentPlanSegue", "MyDoctorSegue", "SettingsSegue"]
