@@ -14,7 +14,10 @@ class RoundedButton: UIButton {
         clipsToBounds = true
         layer.cornerRadius = 5
         layer.borderWidth = 1.0
-        layer.borderColor = UIColor.white.cgColor
+        if self.currentTitle != "Login/Signup" {
+            layer.borderColor = UIColor.white.cgColor
+        }
+        
     }
 
 }

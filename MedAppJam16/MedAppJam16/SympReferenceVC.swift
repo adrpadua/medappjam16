@@ -101,11 +101,11 @@ extension SymptomReferenceViewController {
         let listSymptom = sender as! Symptom
         symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
         
-//        if (fromMySymptomsVC) {
-//            symptomVC.fromMySymptomsVC = true
-//            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
-//        }
-//        
+        if (fromMySymptomsVC) {
+            symptomVC.fromMySymptomsVC = true
+            symptomVC.navigationItem.rightBarButtonItem?.title = "Add"
+        }
+        
         if DataService.ds.user.has(symptomName: listSymptom.name) {
             symptomVC.navigationItem.rightBarButtonItem?.title = "Update"
         }

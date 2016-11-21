@@ -72,12 +72,12 @@ class SymptomViewController: UITableViewController {
         warningLbl3.isHidden = symptom.rating == 3 ? false : true
         
         if DataService.ds.user.has(symptomName: symptom.name) {
-            updateAddButton.isEnabled = symptom.rating == 0 ? true : false
+//            updateAddButton.isEnabled = symptom.rating == 0 ? true : false
         }
         
-//        if (fromMySymptomsVC || fromPossibleSymptomsVC) {
-//            updateAddButton.isEnabled = symptom.rating == 0 ? false : true
-//        }
+        if (fromMySymptomsVC || fromPossibleSymptomsVC) {
+            updateAddButton.isEnabled = symptom.rating == 0 ? false : true
+        }
         
         ratingLbl.text = "\(symptom.rating)"
         
