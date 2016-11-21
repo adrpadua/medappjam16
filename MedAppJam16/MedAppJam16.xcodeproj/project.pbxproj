@@ -64,6 +64,7 @@
 		A03A0D611DD4451D0065A602 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A03A0D691DD44E2D0065A602 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A03A0D6B1DD44EC70065A602 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		A03E9A731DE28469006F6FE0 /* MedAppJam16.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MedAppJam16.entitlements; sourceTree = "<group>"; };
 		A049E1601DDEDA7F0084CFF3 /* PossibleCausesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PossibleCausesVC.swift; sourceTree = "<group>"; };
 		A081218E1DD99E51001409AE /* SymptomVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomVC.swift; sourceTree = "<group>"; };
 		A084E9561DD9462800E35720 /* SymptomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymptomTableViewCell.swift; sourceTree = "<group>"; };
@@ -143,6 +144,7 @@
 		A03A0D4A1DD38DA90065A602 /* MedAppJam16 */ = {
 			isa = PBXGroup;
 			children = (
+				A03E9A731DE28469006F6FE0 /* MedAppJam16.entitlements */,
 				A01638D71DDC153A00A3DC99 /* Services */,
 				A01AC6741DD9331B007BD3C4 /* Util */,
 				A03A0D651DD44CCB0065A602 /* Model */,
@@ -269,6 +271,11 @@
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = HFV6PE6T73;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -508,6 +515,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MedAppJam16/MedAppJam16.entitlements;
 				DEVELOPMENT_TEAM = HFV6PE6T73;
 				INFOPLIST_FILE = MedAppJam16/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -524,6 +532,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MedAppJam16/MedAppJam16.entitlements;
 				DEVELOPMENT_TEAM = HFV6PE6T73;
 				INFOPLIST_FILE = MedAppJam16/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
