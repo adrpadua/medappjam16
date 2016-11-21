@@ -64,6 +64,15 @@ class MyOncologistViewController: UIViewController, UITableViewDelegate, UITable
         dismiss(animated: true, completion: nil)
     }
     
+    
+    func callNumber(phoneNumber:String) {
+        if let phoneCallURL:NSURL = NSURL(string: "tel://\(phoneNumber)") {
+            let application:UIApplication = UIApplication.shared
+            if (application.canOpenURL(phoneCallURL as URL)) {
+                application.openURL(phoneCallURL as URL);
+            }
+        }
+    }
 }
 
 extension MyOncologistViewController {
@@ -112,11 +121,19 @@ extension MyOncologistViewController {
         return 170
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 1 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            callNumber(phoneNumber: "4242179179")
+        }
+        
         if indexPath.row == 2 {
             tableView.deselectRow(at: indexPath, animated: true)
+            print("\(channels.count) channels")
             
-            while channels.isEmpty {
-                self.observeChannels()
+            if channels.isEmpty {
+                observeChannels()
+                return
             }
             
             print(channels[0])

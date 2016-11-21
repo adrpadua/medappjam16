@@ -41,6 +41,9 @@ class ChatViewController: JSQMessagesViewController {
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         
+        self.inputToolbar.contentView.textView.text = "Ramen Noodles"
+        self.inputToolbar.contentView.textView.becomeFirstResponder()
+        
         observeMessages()
     }
     
