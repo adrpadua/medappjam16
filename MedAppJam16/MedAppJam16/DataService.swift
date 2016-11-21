@@ -19,7 +19,17 @@ class DataService {
     
     // DB references
     var REF_BASE = DB_BASE
-    
     var user = User(name: "Sarah Connor", currentSymptoms: [], currentTreatments: [t0], doctor: doc0)
     
+    
+}
+
+internal class Channel {
+    internal let id: String
+    internal let name: String
+    
+    init(id: String, name: String) {
+        self.id = id
+        self.name = name
+    }
 }

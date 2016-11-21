@@ -12,14 +12,14 @@ import FirebaseAuth
 import FirebaseStorage
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         // Do any additional setup after loading the view.
     }
     
@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
             print("not logged in")
         }
     }
-
+    
     @IBAction func loginBtnPressed(_ sender: Any) {
         loginWithCredentials(emailAddress: emailTextField.text!, password: passwordTextField.text!)
         passwordTextField.text = ""
@@ -44,7 +44,7 @@ class LoginViewController: UIViewController {
         FIRAuth.auth()?.signIn(withEmail: emailAddress, password: password, completion: { (user, error) in
             if (error == nil) {
                 // Log in successfully
-                
+                    self.createChatChannel()
                 // code to segue to main screens.
                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 
@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
                 FIRAuth.auth()?.createUser(withEmail: emailAddress, password: password, completion: { (user, error) in
                     if (error == nil) {
                         // Success, created account, logging in now
+                        self.createChatChannel()
                         self.performSegue(withIdentifier: "loginSegue", sender: nil)
                         
                     } else {
@@ -67,15 +68,32 @@ class LoginViewController: UIViewController {
         })
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func createChatChannel() {
+        var ref = FIRDatabase.database().reference()
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            if snapshot.childrenCount == 1 {
+                return
+            } else {
+                let name = "Chat Channel"
+                let chatRef = ref.childByAutoId()
+                let chatItem = [
+                    "name": name
+                ]
+                chatRef.setValue(chatItem)
+            }
+        })
+        
     }
-    */
-
+    
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

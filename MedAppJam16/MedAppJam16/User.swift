@@ -13,7 +13,6 @@ class User {
     
     var currentSymptoms: [Symptom] = []
     var currentTreatments: [Treatment]
-    
     var doctor: Doctor = Doctor()
     
     init(name: String, currentSymptoms: [Symptom], currentTreatments: [Treatment], doctor: Doctor) {

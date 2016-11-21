@@ -7,43 +7,63 @@
 //
 
 import UIKit
+import Firebase
 
 class MyOncologistViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+    
     
     @IBOutlet weak var tableView: UITableView!
     
+    var channelRefHandle: FIRDatabaseHandle?
+    var channels: [Channel] = []
+    var channelRef: FIRDatabaseReference = FIRDatabase.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         tableView.delegate = self
         tableView.dataSource = self
+        observeChannels()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+//        observeChannels()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    deinit {
+        if let refHandle = channelRefHandle {
+            channelRef.removeObserver(withHandle: refHandle)
+        }
     }
-    */
-
+    
+    func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            if let name = channelData["name"] as! String!, name.characters.count > 0 {
+                self.channels.append(Channel(id: id, name: name))
+                self.tableView.reloadData()
+            } else {
+                print("Error! Could not decode channel data")
+            }
+        })
+    }
+    
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 extension MyOncologistViewController {
@@ -91,6 +111,35 @@ extension MyOncologistViewController {
         }
         return 170
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 2 {
+            tableView.deselectRow(at: indexPath, animated: true)
+            
+            while channels.isEmpty {
+                self.observeChannels()
+            }
+            
+            print(channels[0])
+            performSegue(withIdentifier: "ChatSegue", sender: channels[0])
+        }
+    }
+    
+    
+    // MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ChatSegue" {
+            if let channel = sender as? Channel {
+                let navVC = segue.destination as! UINavigationController
+                let chatVc = navVC.viewControllers.first as! ChatViewController
+                
+                chatVc.senderDisplayName = "Sarah"
+                chatVc.channel = channel
+                print(channel.id)
+                chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
+            }
+        }
+    }
+    
 }
 
 class DoctorCell: UITableViewCell {

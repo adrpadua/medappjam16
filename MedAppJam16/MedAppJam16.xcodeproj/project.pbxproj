@@ -35,6 +35,7 @@
 		A0B4519C1DE0B8F400996787 /* DrugSideEffectsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B4519B1DE0B8F400996787 /* DrugSideEffectsVC.swift */; };
 		A0B451A21DE1291000996787 /* MyOncologistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B451A11DE1291000996787 /* MyOncologistVC.swift */; };
 		A0CEFB3A1DDE52DD0018D022 /* TreatmentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CEFB391DDE52DD0018D022 /* TreatmentVC.swift */; };
+		A0D203241DE2959F00E54C93 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D203231DE2959F00E54C93 /* ChatVC.swift */; };
 		A0D3F7981DDD671F00B3385C /* TreatmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */; };
 		BA5ADED863C9F7E136A083EB /* Pods_MedAppJam16.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 651462A20EB2CF9E1E05B688 /* Pods_MedAppJam16.framework */; };
 /* End PBXBuildFile section */
@@ -74,6 +75,7 @@
 		A0B4519B1DE0B8F400996787 /* DrugSideEffectsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrugSideEffectsVC.swift; sourceTree = "<group>"; };
 		A0B451A11DE1291000996787 /* MyOncologistVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOncologistVC.swift; sourceTree = "<group>"; };
 		A0CEFB391DDE52DD0018D022 /* TreatmentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentVC.swift; sourceTree = "<group>"; };
+		A0D203231DE2959F00E54C93 /* ChatVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		A0D3F7971DDD671F00B3385C /* TreatmentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TreatmentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +192,7 @@
 				A0B558821DDEC89C00FBB04F /* Menu Pages */,
 				A0B4519A1DE0B8D400996787 /* Other Pages */,
 				A0B558831DDEC8AB00FBB04F /* Item Pages */,
+				A0D203231DE2959F00E54C93 /* ChatVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				A049E1611DDEDA7F0084CFF3 /* PossibleCausesVC.swift in Sources */,
 				A01D8C271DDA2AB300927523 /* MySymptomTableViewCell.swift in Sources */,
 				A084E9571DD9462800E35720 /* SymptomTableViewCell.swift in Sources */,
+				A0D203241DE2959F00E54C93 /* ChatVC.swift in Sources */,
 				A03A0D4C1DD38DA90065A602 /* AppDelegate.swift in Sources */,
 				A0D3F7981DDD671F00B3385C /* TreatmentTableViewCell.swift in Sources */,
 				A02F67711DE1769D005945E6 /* SettingsVC.swift in Sources */,
