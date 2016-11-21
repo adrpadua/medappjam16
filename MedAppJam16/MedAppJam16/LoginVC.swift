@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
         
         if (FIRAuth.auth()?.currentUser) != nil {
             // User is signed in.
-            print(FIRAuth.auth()?.currentUser?.email!)
             
             performSegue(withIdentifier: "loginSegue", sender: nil)
         } else {
@@ -38,6 +37,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginBtnPressed(_ sender: Any) {
         loginWithCredentials(emailAddress: emailTextField.text!, password: passwordTextField.text!)
+        passwordTextField.text = ""
     }
     
     func loginWithCredentials(emailAddress: String, password: String) {
