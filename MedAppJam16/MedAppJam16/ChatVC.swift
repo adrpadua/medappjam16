@@ -17,6 +17,7 @@ class ChatViewController: JSQMessagesViewController {
     var fromSentReport = false
     var feeling = ""
     var feelsNo = 0
+    var initialText = ""
     
     var channelRef: FIRDatabaseReference?
     var channel: Channel? {
@@ -51,6 +52,11 @@ class ChatViewController: JSQMessagesViewController {
         // No avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
+        if initialText != "" {
+            self.inputToolbar.contentView.textView.text = initialText
+            self.inputToolbar.contentView.rightBarButtonItem.isEnabled = true
+        }
         
         if (fromSentReport) {
             self.sendFace(number: feelsNo)

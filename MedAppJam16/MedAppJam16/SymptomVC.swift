@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SymptomViewController: UITableViewController {
     
@@ -29,17 +30,50 @@ class SymptomViewController: UITableViewController {
     var fromMySymptomsVC = false
     var fromPossibleSymptomsVC = false
     
+    var channelRefHandle: FIRDatabaseHandle?
+    var channels: [Channel] = []
+    var channelRef: FIRDatabaseReference = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observeChannels()
         updateUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         updateUI()
     }
-
+    
+    deinit {
+        if let refHandle = channelRefHandle {
+            channelRef.removeObserver(withHandle: refHandle)
+        }
+    }
+    
+    func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            if let name = channelData["name"] as! String!, name.characters.count > 0 {
+                self.channels.append(Channel(id: id, name: name))
+            } else {
+                print("Error! Could not decode channel data")
+            }
+        })
+    }
+    
+    @IBAction func docBtnPressed(_ sender: Any) {
+        if channels.isEmpty {
+            observeChannels()
+            return
+        }
+        performSegue(withIdentifier: "ChatSegue", sender: channels[0])
+    }
+    
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,7 +106,8 @@ class SymptomViewController: UITableViewController {
         warningLbl3.isHidden = symptom.rating == 3 ? false : true
         
         if DataService.ds.user.has(symptomName: symptom.name) {
-//            updateAddButton.isEnabled = symptom.rating == 0 ? true : false
+            self.navigationItem.rightBarButtonItem?.title = DataService.ds.user.has(symptomName: symptom.name)
+                && symptom.rating == 0 ? "Remove" : "Update"
         }
         
         if (fromMySymptomsVC || fromPossibleSymptomsVC) {
@@ -140,6 +175,22 @@ class SymptomViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "ChatSegue" {
+            if let channel = sender as? Channel {
+                let navVC = segue.destination as! UINavigationController
+                let chatVc = navVC.viewControllers.first as! ChatViewController
+                
+                chatVc.senderDisplayName = "Sarah"
+                chatVc.channel = channel
+                print(channel.id)
+                chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
+                
+                chatVc.initialText = "I have questions about the following symptom: \(symptom.name)"
+            }
+        }
+        
+        
         if segue.identifier == "PossibleCausesSegue" {
             print("pc bro")
             let causesVC = segue.destination as! PossibleCausesViewController

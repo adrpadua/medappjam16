@@ -73,7 +73,7 @@
                                             <constraint firstAttribute="width" secondItem="HTC-ok-zmj" secondAttribute="height" multiplier="1:1" id="DrD-bW-bQx"/>
                                             <constraint firstAttribute="height" constant="35" id="erj-Vv-hNS"/>
                                         </constraints>
-                                        <state key="normal" image="steth"/>
+                                        <state key="normal" image="5"/>
                                         <connections>
                                             <segue destination="AQ5-zH-jcr" kind="show" identifier="SendReportSeque" id="sCz-Bf-7yh"/>
                                         </connections>
@@ -775,7 +775,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="71A72D8F-8B3C-4154-B421-8CCB53D6396B" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="6EDCFCF7-3EFB-42E9-8146-FB085C7BA4CD" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -871,8 +871,8 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E1I-aj-0TM">
-                                                    <rect key="frame" x="164.33333333333334" y="20.999999999999996" width="85.333333333333314" height="29.666666666666661"/>
-                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                                    <rect key="frame" x="157" y="20.999999999999996" width="100.33333333333331" height="29.666666666666661"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="20"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -886,6 +886,9 @@
                                                     <state key="normal" title="Ask Your Doctor">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="askDocPressed:" destination="odd-2O-lGL" eventType="touchUpInside" id="b4G-US-0fb"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -896,7 +899,7 @@
                                                 <constraint firstItem="E1I-aj-0TM" firstAttribute="top" secondItem="DXW-Ew-KKP" secondAttribute="topMargin" constant="13" id="whI-Cg-j0D"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.2784313725" green="0.4823529412" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.2784313725" green="0.70588235290000001" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -922,6 +925,7 @@
                     <connections>
                         <outlet property="tableView" destination="6k6-vK-Z8t" id="l7B-dO-pOp"/>
                         <segue destination="Bep-tt-iUA" kind="show" identifier="PossibleSymptomsSegue" id="u4F-kx-2IX"/>
+                        <segue destination="BEB-Vh-EL8" kind="show" identifier="ChatSegue" id="vFM-hd-VGX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sZr-oY-KtQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1289,22 +1293,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let your doctor know by sending an update" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJQ-8R-iMO">
-                                                    <rect key="frame" x="82.666666666666686" y="7.9999999999999982" width="248.66666666666663" height="23.333333333333329"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Concerned?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJQ-8R-iMO">
+                                                    <rect key="frame" x="82.666666666666686" y="8" width="248.66666666666663" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5DG-ND-F0k" customClass="RoundedButton" customModule="MedAppJam16" customModuleProvider="target">
-                                                    <rect key="frame" x="132" y="58.333333333333329" width="151" height="50.999999999999986"/>
+                                                    <rect key="frame" x="132" y="59.333333333333329" width="151" height="50.999999999999986"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="151" id="LVx-1g-Fca"/>
                                                         <constraint firstAttribute="height" constant="51" id="a86-Uv-Zw9"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                                    <state key="normal" title="Send to Doctor">
+                                                    <state key="normal" title="Let your Doctor know">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="docBtnPressed:" destination="DPD-9q-Z5i" eventType="touchUpInside" id="Zh4-1G-ocW"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1351,6 +1358,7 @@
                         <outlet property="warningLbl1" destination="ebz-FO-BKN" id="9IC-Wq-rIm"/>
                         <outlet property="warningLbl2" destination="f1u-MP-KFR" id="ByI-Xw-ZKg"/>
                         <outlet property="warningLbl3" destination="5h3-vs-8VJ" id="5Ze-k7-RbF"/>
+                        <segue destination="BEB-Vh-EL8" kind="show" identifier="ChatSegue" id="43R-B1-6xF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OS4-lA-xsC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1521,7 +1529,8 @@
     </scenes>
     <resources>
         <image name="4" width="256" height="256"/>
-        <image name="71A72D8F-8B3C-4154-B421-8CCB53D6396B" width="30" height="30">
+        <image name="5" width="256" height="256"/>
+        <image name="6EDCFCF7-3EFB-42E9-8146-FB085C7BA4CD" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
@@ -1583,12 +1592,11 @@ kguXAAAAAAAAAgEAAAAAAAAATQAAAAAAAAAAAAAAAAAAC5k
         <image name="minus" width="64" height="64"/>
         <image name="phone-call" width="64" height="64"/>
         <image name="plus" width="64" height="64"/>
-        <image name="steth" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Tnh-FW-SNW"/>
-        <segue reference="r6J-cb-LEf"/>
-        <segue reference="MQH-S2-pjl"/>
-        <segue reference="3s0-b2-ry4"/>
+        <segue reference="gfT-Dc-4Nq"/>
+        <segue reference="3dV-AB-Xbk"/>
+        <segue reference="43R-B1-6xF"/>
     </inferredMetricsTieBreakers>
 </document>

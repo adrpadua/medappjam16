@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import Firebase
 
 class TreatmentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var treatment: Treatment!
     @IBOutlet weak var tableView: UITableView!
     
+    var channelRefHandle: FIRDatabaseHandle?
+    var channels: [Channel] = []
+    var channelRef: FIRDatabaseReference = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,8 @@ class TreatmentViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        
+        observeChannels()
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,23 +33,67 @@ class TreatmentViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    
+    deinit {
+        if let refHandle = channelRefHandle {
+            channelRef.removeObserver(withHandle: refHandle)
+        }
+    }
+    
     @IBAction func backBtnPressed(_ sender: Any) {
         self.navigationController!.popViewController(animated: true)
     }
-
+    
+    func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            if let name = channelData["name"] as! String!, name.characters.count > 0 {
+                self.channels.append(Channel(id: id, name: name))
+            } else {
+                print("Error! Could not decode channel data")
+            }
+        })
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let drugSideEffectsVC = segue.destination as! DrugSideEffectsViewController
-        drugSideEffectsVC.drug = sender as! Drug
         
-        drugSideEffectsVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
-        drugSideEffectsVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        drugSideEffectsVC.title = (sender as! Drug).name
+        if segue.identifier == "ChatSegue" {
+            if let channel = sender as? Channel {
+                let navVC = segue.destination as! UINavigationController
+                let chatVc = navVC.viewControllers.first as! ChatViewController
+                
+                chatVc.senderDisplayName = "Sarah"
+                chatVc.channel = channel
+                print(channel.id)
+                chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
+                
+                chatVc.initialText = "I have questions about the following treatment: \(treatment.name)"
+            }
+        } else {
+            let drugSideEffectsVC = segue.destination as! DrugSideEffectsViewController
+            drugSideEffectsVC.drug = sender as! Drug
+            
+            drugSideEffectsVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
+            drugSideEffectsVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+            drugSideEffectsVC.title = (sender as! Drug).name
+        }
+        
     }
 
+    @IBAction func askDocPressed(_ sender: Any) {
+        if channels.isEmpty {
+            observeChannels()
+            return
+        }
+        performSegue(withIdentifier: "ChatSegue", sender: channels[0])
+    }
 }
 
 extension TreatmentViewController {
@@ -68,7 +118,7 @@ extension TreatmentViewController {
         } else {
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionsCell")  as? QuestionsCell  {
-                cell.isUserInteractionEnabled = false
+                cell.isUserInteractionEnabled = true
                 return cell
             }
         }
@@ -97,6 +147,7 @@ extension TreatmentViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         let selectedDrug = treatment.drugs[indexPath.row - 1]
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: "PossibleSymptomsSegue", sender: selectedDrug)

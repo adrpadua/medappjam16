@@ -13,6 +13,7 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyLbl: UILabel!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,6 +23,7 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,6 +38,7 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
         self.tableView.reloadData()
     }
     
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -44,6 +47,7 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
     @IBAction func backBtnPressed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
 
     
     // MARK: - Navigation
@@ -60,6 +64,7 @@ class MyTreatmentsViewController: UIViewController, UITableViewDelegate, UITable
             myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "Avenir", size: 20)!]
             myTreatmentVC.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         }
+        
         
     }
  
