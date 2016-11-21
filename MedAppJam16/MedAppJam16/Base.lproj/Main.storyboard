@@ -744,6 +744,7 @@
                         <outlet property="label" destination="0VG-Ce-WiH" id="VR5-Ia-ysw"/>
                         <outlet property="slider" destination="aai-t8-xMU" id="qpm-s3-AmH"/>
                         <outlet property="sympLbl" destination="RSZ-k4-b0c" id="Vs7-K4-fN8"/>
+                        <segue destination="BEB-Vh-EL8" kind="show" identifier="ChatSegue" id="MQH-S2-pjl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMa-Kq-8ij" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -774,7 +775,7 @@
         <scene sceneID="Nk4-5g-JY8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lSc-QB-z8g" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Symptoms" image="A1A35176-608F-4513-8599-D64093DED2B7" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Symptoms" image="71A72D8F-8B3C-4154-B421-8CCB53D6396B" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="YYo-c5-VA1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="QIO-3C-8So">
@@ -1520,7 +1521,7 @@
     </scenes>
     <resources>
         <image name="4" width="256" height="256"/>
-        <image name="A1A35176-608F-4513-8599-D64093DED2B7" width="30" height="30">
+        <image name="71A72D8F-8B3C-4154-B421-8CCB53D6396B" width="30" height="30">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGSUpYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEAcI
 ERYbHCUmJysyNzo9Q0ZVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZOU1JlcHNXTlND
@@ -1585,8 +1586,9 @@ kguXAAAAAAAAAgEAAAAAAAAATQAAAAAAAAAAAAAAAAAAC5k
         <image name="steth" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="r6J-cb-LEf"/>
         <segue reference="Tnh-FW-SNW"/>
+        <segue reference="r6J-cb-LEf"/>
+        <segue reference="MQH-S2-pjl"/>
         <segue reference="3s0-b2-ry4"/>
     </inferredMetricsTieBreakers>
 </document>

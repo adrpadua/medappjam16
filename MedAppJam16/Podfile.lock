@@ -49,6 +49,7 @@ PODS:
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
+  - SwiftGifOrigin (1.6.1)
   - SwiftyJSON (3.1.1)
 
 DEPENDENCIES:
@@ -58,6 +59,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - JSQMessagesViewController
+  - SwiftGifOrigin
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -74,8 +76,9 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  SwiftGifOrigin: d6679d3ebe9df2e049a84bc52582635107b581f6
   SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
 
-PODFILE CHECKSUM: cea7e11f7bef8deff6f1f24c721471b277480b25
+PODFILE CHECKSUM: 161208090130bb0235b6005a4d215d87059ba5ee
 
 COCOAPODS: 1.1.1

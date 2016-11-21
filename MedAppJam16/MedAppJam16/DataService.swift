@@ -24,6 +24,43 @@ class DataService {
     
 }
 
+class ChronoService {
+    
+    static let cs = ChronoService()
+    
+    let date = NSDate()
+    let calendar = NSCalendar.current
+    
+    var components: NSDateComponents
+    
+    var hour: Int
+    var minutes: Int
+    var timeStr: String {
+        get {
+            return "\(hour):\(minutes)"
+        }
+    }
+    
+    var year: Int
+    var month: Int
+    var day: Int
+    var dateStr: String {
+        get {
+            return "\(month)/\(day)/\(year)"
+        }
+    }
+    
+    init() {
+        components = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date) as NSDateComponents
+        
+        hour = calendar.component(.hour, from: date as Date)
+        minutes = calendar.component(.minute, from: date as Date)
+        year =  components.year
+        month = components.month
+        day = components.day
+    }
+}
+
 internal class Channel {
     internal let id: String
     internal let name: String

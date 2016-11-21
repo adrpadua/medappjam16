@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class SendReportViewController: UIViewController {
-
+    
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sympLbl: UILabel!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var faceImg: UIImageView!
-
+    
+    
     var feelings = ["Terrible", "Worse", "Bad", "Decent", "Good", "Great"]
+    
+    var channelRefHandle: FIRDatabaseHandle?
+    var channels: [Channel] = []
+    var channelRef: FIRDatabaseReference = FIRDatabase.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,15 +32,22 @@ class SendReportViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         slider.value = 4
+        observeChannels()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         sympLbl.text = "Symptoms: \(DataService.ds.user.currentSymptoms.count)"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        if let refHandle = channelRefHandle {
+            channelRef.removeObserver(withHandle: refHandle)
+        }
     }
     
     @IBAction func backBtnPressed(_ sender: Any) {
@@ -47,19 +60,45 @@ class SendReportViewController: UIViewController {
         faceImg.image = UIImage(named: "\(currentValue)")
         label.text = "Current Feeling: \(feelings[currentValue - 1])"
     }
-
+    
     @IBAction func sendUpdatePressed(_ sender: Any) {
-        
+        if channels.isEmpty {
+            observeChannels()
+            return
+        }
+        performSegue(withIdentifier: "ChatSegue", sender: channels[0])
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
+    func observeChannels() {
+        // We can use the observe method to listen for new
+        // channels being written to the Firebase DB
+        channelRefHandle = channelRef.observe(.childAdded, with: { (snapshot) -> Void in
+            let channelData = snapshot.value as! Dictionary<String, AnyObject>
+            let id = snapshot.key
+            if let name = channelData["name"] as! String!, name.characters.count > 0 {
+                self.channels.append(Channel(id: id, name: name))
+            } else {
+                print("Error! Could not decode channel data")
+            }
+        })
+    }
+    
+    // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ChatSegue" {
+            if let channel = sender as? Channel {
+                let navVC = segue.destination as! UINavigationController
+                let chatVc = navVC.viewControllers.first as! ChatViewController
+                
+                chatVc.senderDisplayName = "Sarah"
+                chatVc.channel = channel
+                print(channel.id)
+                chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
+                chatVc.fromSentReport = true
+                chatVc.feeling = feelings[Int(slider.value) - 1]
+                chatVc.feelsNo = Int(slider.value)
+            }
+        }
     }
-    */
-
+    
 }
