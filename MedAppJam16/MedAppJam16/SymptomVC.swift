@@ -186,7 +186,7 @@ class SymptomViewController: UITableViewController {
                 print(channel.id)
                 chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
                 
-                chatVc.initialText = "I have questions about the following symptom: \(symptom.name)"
+                chatVc.initialText = "\(ChronoService.cs.dateTimeStr): I have questions about the following symptom: \(symptom.name)"
             }
         }
         

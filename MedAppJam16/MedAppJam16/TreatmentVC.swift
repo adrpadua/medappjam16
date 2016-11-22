@@ -74,7 +74,7 @@ class TreatmentViewController: UIViewController, UITableViewDelegate, UITableVie
                 print(channel.id)
                 chatVc.channelRef = FIRDatabase.database().reference().child(channel.id)
                 
-                chatVc.initialText = "I have questions about the following treatment: \(treatment.name)"
+                chatVc.initialText = "\(ChronoService.cs.dateTimeStr): I have questions about the following treatment: \(treatment.name)"
             }
         } else {
             let drugSideEffectsVC = segue.destination as! DrugSideEffectsViewController

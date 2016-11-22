@@ -63,7 +63,7 @@ class ChatViewController: JSQMessagesViewController {
             finishSendingMessage()
 
             
-            let msgStr = "\(ChronoService.cs.dateStr) (\(ChronoService.cs.timeStr)): I am feeling \(feeling). Also, I am experiencing \(DataService.ds.user.currentSymptoms.count) symptom(s)."
+            let msgStr = "\(ChronoService.cs.dateTimeStr): I am feeling \(feeling). Also, I am experiencing \(DataService.ds.user.currentSymptoms.count) symptom(s)."
             
             let itemRef = messageRef.childByAutoId() // 1
             let messageItem = [ // 2

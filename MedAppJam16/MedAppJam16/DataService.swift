@@ -29,35 +29,47 @@ class ChronoService {
     static let cs = ChronoService()
     
     let date = NSDate()
-    let calendar = NSCalendar.current
+    var calendar: Calendar {
+        return NSCalendar.current
+    }
     
-    var components: NSDateComponents
+    var components: NSDateComponents {
+        get {
+            return calendar.dateComponents([.year, .month, .day, .hour], from: date as Date) as NSDateComponents
+        }
+    }
     
-    var hour: Int
-    var minutes: Int
+    var hour: Int {
+        return calendar.component(.hour, from: date as Date)
+    }
+    var minutes: Int {
+        return calendar.component(.minute, from: date as Date)
+    }
+    
     var timeStr: String {
         get {
             return "\(hour):\(minutes)"
         }
     }
     
-    var year: Int
-    var month: Int
-    var day: Int
+    var year: Int {
+        return components.year
+    }
+    var month: Int {
+        return components.month
+    }
+    var day: Int {
+        return components.day
+    }
+    
     var dateStr: String {
         get {
             return "\(month)/\(day)/\(year)"
         }
     }
     
-    init() {
-        components = calendar.dateComponents([.year, .month, .day, .hour], from: date as Date) as NSDateComponents
-        
-        hour = calendar.component(.hour, from: date as Date)
-        minutes = calendar.component(.minute, from: date as Date)
-        year =  components.year
-        month = components.month
-        day = components.day
+    var dateTimeStr: String {
+        return "\(self.dateStr) (\(self.timeStr))"
     }
 }
 
